@@ -80,7 +80,6 @@ while st.session_state['lives']>0 and next_try:
             st.session_state['right_answer'] != st.session_state['guess']:
              st.session_state['lives']-=1       
              
-
     score_holder.markdown(f"Current score: {st.session_state['score']}")
     lives_holder.markdown(f"Lives left: {st.session_state['lives']}")
     
@@ -94,10 +93,9 @@ while st.session_state['lives']>0 and next_try:
         
         st.session_state['right_answer'] = df.iloc[country_id][1]
         possible_options = [st.session_state['right_answer']]
-#        country_holder.markdown(st.session_state['right_answer'])
         
         while len(possible_options)<4:
-            random_country = df.iloc[random.randint(0,177)][1]
+            random_country = df.iloc[random.randint(0,number_countries-1)][1]
             if random_country not in possible_options:
                 possible_options.append(random_country)
         random.shuffle(possible_options)
